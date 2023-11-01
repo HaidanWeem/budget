@@ -3,3 +3,7 @@ include: package:solid_lints/analysis_options.yaml
 linter: 
   rules: 
     public_member_api_docs: false
+
+analyzer:
+  exclude:
+    - lib/default_firebase_options.dart
