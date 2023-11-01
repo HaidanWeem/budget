@@ -1,5 +1,6 @@
 import 'package:budget/auth/widgets/wave_clip.dart';
 import 'package:budget/core/budget_colors.dart';
+import 'package:budget/core/budget_messages.dart';
 import 'package:flutter/material.dart';
 
 class BudgetAppBar extends StatelessWidget {
@@ -51,6 +52,16 @@ class BudgetAppBar extends StatelessWidget {
             child: const Text(
               'LOGO',
               style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(bottom: 16),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                BudgetMessages.welcomeBack,
+                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 28),
+              ),
             ),
           ),
         ],
