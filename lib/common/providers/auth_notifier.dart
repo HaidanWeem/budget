@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthNotifier extends ChangeNotifier {
-  final AuthRepository authRepository;
+  final AuthRepository _authRepository;
 
   User? _user;
 
@@ -14,13 +14,16 @@ class AuthNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  AuthNotifier(this.authRepository);
+  AuthNotifier(this._authRepository);
+
+  Future<bool> sendSignInLinkToEmail(String email) =>
+      _authRepository.sendSignInLinkToEmail(email);
 
   Future<void> signInWithEmailLink({
     required String email,
     required String link,
   }) async {
-    user = await authRepository.signInWithEmailLink(
+    user = await _authRepository.signInWithEmailLink(
       email: email,
       link: link,
     );

@@ -2,16 +2,16 @@ import 'package:budget/core/budget_colors.dart';
 import 'package:budget/core/budget_messages.dart';
 import 'package:flutter/material.dart';
 
-class AuthTextField extends StatefulWidget {
+class EmailTextField extends StatefulWidget {
   final TextEditingController controller;
 
-  const AuthTextField({required this.controller, super.key});
+  const EmailTextField({required this.controller, super.key});
 
   @override
-  State<AuthTextField> createState() => _AuthTextFieldState();
+  State<EmailTextField> createState() => _EmailTextFieldState();
 }
 
-class _AuthTextFieldState extends State<AuthTextField> {
+class _EmailTextFieldState extends State<EmailTextField> {
   final _focusNode = FocusNode();
 
   bool _isFocused = false;
@@ -35,6 +35,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
         focusedBorder: _border(BudgetColors.border),
         enabledBorder: _border(Colors.grey),
         errorBorder: _border(BudgetColors.error),
+        focusedErrorBorder: _border(BudgetColors.error),
       ),
     );
   }
@@ -51,7 +52,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
   }
 
   String? validator(String? value) {
-    final regExp = RegExp(r'/^\S+@\S+\.\S+$/');
+    final regExp = RegExp(r'^\S+@\S+\.\S+$');
     if (regExp.hasMatch(value ?? '')) return null;
 
     return BudgetMessages.emailIsNotValid;

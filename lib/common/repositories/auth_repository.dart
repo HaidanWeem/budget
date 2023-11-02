@@ -3,20 +3,26 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepository {
+  static const _dynamicLinkSignIn = 'https://budgetverification.page.link/';
+
   final _auth = FirebaseAuth.instance;
 
-  Future<void> sendSignInLinkToEmail(String email) async {
+  Future<bool> sendSignInLinkToEmail(String email) async {
     try {
       await _auth.sendSignInLinkToEmail(
         email: email,
         actionCodeSettings: ActionCodeSettings(
-          url: 'https://budgetverification.page.link/',
+          url: _dynamicLinkSignIn,
           handleCodeInApp: true,
           androidPackageName: 'budget.budget',
         ),
       );
+
+      return true;
     } catch (e) {
       log(e.toString());
+
+      return false;
     }
   }
 
