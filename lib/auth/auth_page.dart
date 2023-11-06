@@ -23,23 +23,26 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          const BudgetAppBar(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            child: EmailTextField(controller: _emailController),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: BudgetButton(
-              text: BudgetMessages.continueA,
-              onPressed: onPressed,
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            const BudgetAppBar(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: EmailTextField(controller: _emailController),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: BudgetButton(
+                text: BudgetMessages.continueA,
+                onPressed: onPressed,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

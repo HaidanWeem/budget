@@ -1,6 +1,8 @@
-import 'package:budget/auth/auth_page.dart';
+import 'package:budget/budget_router.dart';
+import 'package:budget/common/providers/auth_notifier.dart';
 import 'package:budget/core/injection_container.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BudgetApp extends StatefulWidget {
   const BudgetApp({super.key});
@@ -10,14 +12,17 @@ class BudgetApp extends StatefulWidget {
 }
 
 class _BudgetAppState extends State<BudgetApp> {
+  BudgetRouter? budgetRouter;
+
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: InjectionContainer(
-          child: AuthPage(),
-        ),
+    return InjectionContainer(
+      child: Builder(
+        builder: (context) {
+          budgetRouter = BudgetRouter(context.read<AuthNotifier>());
+
+          return MaterialApp.router(routerConfig: budgetRouter?.router);
+        },
       ),
     );
   }

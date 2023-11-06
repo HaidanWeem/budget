@@ -14,18 +14,12 @@ class AuthNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  AuthNotifier(this._authRepository);
+  AuthNotifier(this._authRepository) {
+    _authRepository.authStateChanges.listen((u) => user = u);
+  }
 
   Future<bool> sendSignInLinkToEmail(String email) =>
       _authRepository.sendSignInLinkToEmail(email);
 
-  Future<void> signInWithEmailLink({
-    required String email,
-    required String link,
-  }) async {
-    user = await _authRepository.signInWithEmailLink(
-      email: email,
-      link: link,
-    );
-  }
+  Future<void> signOut() => _authRepository.signOut();
 }
