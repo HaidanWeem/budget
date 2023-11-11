@@ -43,21 +43,18 @@ jobs:
           if [ dirs_to_analyse != "" ]
           then
             dart run dart_code_metrics:metrics \
-              disable-sunset-warning \
               analyze \
               $dirs_to_analyse \
               --fatal-warnings \
               --fatal-performance \
               --fatal-style
             dart run dart_code_metrics:metrics \
-              disable-sunset-warning \
-              check-unused-files \
               $dirs_to_analyse \
+              check-unused-files \
               --fatal-unused
             dart run dart_code_metrics:metrics \
-              disable-sunset-warning \
-              check-unused-code \ 
               $dirs_to_analyse \
+              check-unused-code \ 
               --fatal-unused
           fi
 
