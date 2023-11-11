@@ -30,7 +30,7 @@ jobs:
       
       - name: Setup Dart Code Metrics
         if: steps.check_files.outputs.files_exists == 'true'
-        run: dart pub get dart_code_metrics
+        run: dart pub get dart_code_metrics:5.7.5
 
       - name: Dart Code Metrics
         if: steps.check_files.outputs.files_exists == 'true'
