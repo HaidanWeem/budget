@@ -4,20 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-abstract class AuthState<T extends StatefulWidget> extends State {
+abstract class AuthState<T extends StatefulWidget> extends State<T> {
   AuthNotifier? _authNotfiier;
 
   @override
   void initState() {
     super.initState();
 
-    _authNotfiier = context.read<AuthNotifier>()..addListener(_authListener);
+    _authNotfiier = context.read<AuthNotifier>();
+    _authNotfiier?.addListener(_authListener);
   }
 
   void _authListener() {
-    final isAuthenticated = _authNotfiier?.user != null;
-    isAuthenticated
-        ? context.go(BudgetRoutes.home)
-        : context.go(BudgetRoutes.auth);
+    if (!mounted) return;
+
+    _authNotfiier?.user == null
+        ? context.go(BudgetRoutes.auth)
+        : context.go(BudgetRoutes.home);
   }
 }

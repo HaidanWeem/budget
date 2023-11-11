@@ -6,6 +6,7 @@ import 'package:budget/auth/widgets/email_text_field.dart';
 import 'package:budget/common/providers/auth_notifier.dart';
 import 'package:budget/common/widget/budget_button.dart';
 import 'package:budget/core/budget_messages.dart';
+import 'package:budget/core/state/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,9 +17,8 @@ class AuthPage extends StatefulWidget {
   State<AuthPage> createState() => _AuthPageState();
 }
 
-class _AuthPageState extends State<AuthPage> {
+class _AuthPageState extends AuthState<AuthPage> {
   final _formKey = GlobalKey<FormState>();
-
   final _emailController = TextEditingController();
 
   @override

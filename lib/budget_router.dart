@@ -24,11 +24,8 @@ class BudgetRouter {
         _route(path: BudgetRoutes.auth, page: const AuthPage()),
         _route(path: BudgetRoutes.home, page: const HomePage()),
       ],
-      redirect: (context, state) {
-        return _authNotifier?.user == null
-            ? BudgetRoutes.auth
-            : BudgetRoutes.home;
-      },
+      redirect: (context, state) =>
+          _authNotifier?.user == null ? BudgetRoutes.auth : BudgetRoutes.home,
     );
   }
 

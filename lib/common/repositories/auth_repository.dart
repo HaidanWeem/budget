@@ -5,23 +5,23 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 
 class AuthRepository {
+  static const _applicationId = 'budget.budget';
   static const _dynamicLinkSignIn =
       'https://budgetverification.page.link/verify';
 
   final _auth = FirebaseAuth.instance;
   final _dynamicLinks = FirebaseDynamicLinks.instance;
 
-  Stream<PendingDynamicLinkData> get onLink => _dynamicLinks.onLink;
+  Stream<PendingDynamicLinkData> get _onLink => _dynamicLinks.onLink;
 
   Stream<User?> get authStateChanges => _auth.authStateChanges();
 
   AuthRepository() {
-    onLink.listen(onLinkListener);
+    _onLink.listen(onLinkListener);
   }
 
   Future<void> onLinkListener(PendingDynamicLinkData event) async {
     try {
-      print(event.link);
       final continueUrl = event.link.queryParameters['continueUrl'] ?? '';
       final email = Uri.parse(continueUrl).queryParameters['email'];
 
@@ -40,7 +40,7 @@ class AuthRepository {
         actionCodeSettings: ActionCodeSettings(
           url: '$_dynamicLinkSignIn?email=$email',
           handleCodeInApp: true,
-          androidPackageName: 'budget.budget',
+          androidPackageName: _applicationId,
         ),
       );
 

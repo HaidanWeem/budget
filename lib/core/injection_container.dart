@@ -20,9 +20,7 @@ class _InjectionContainerState extends State<InjectionContainer> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => AuthNotifier(
-            authRepository,
-          ),
+          create: (context) => AuthNotifier(authRepository),
         ),
       ],
       child: widget.child,
