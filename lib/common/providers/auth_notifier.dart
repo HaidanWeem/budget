@@ -1,9 +1,11 @@
 import 'package:budget/common/repositories/auth_repository.dart';
+import 'package:budget/common/repositories/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthNotifier extends ChangeNotifier {
   final AuthRepository _authRepository;
+  final UserRepository _userRepository;
 
   User? _user;
 
@@ -14,8 +16,13 @@ class AuthNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  AuthNotifier(this._authRepository) {
-    _authRepository.authStateChanges.listen((u) => user = u);
+  AuthNotifier(this._authRepository, this._userRepository) {
+    _authRepository.authStateChanges.listen((u) {
+      user = u;
+
+      if (u == null) return;
+      _userRepository.addUser(u);
+    });
   }
 
   Future<bool> sendSignInLinkToEmail(String email) =>
