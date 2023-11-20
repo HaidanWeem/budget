@@ -52,7 +52,7 @@ class _EmailTextFieldState extends State<EmailTextField> {
   }
 
   String? validator(String? value) {
-    final regExp = RegExp(r'^\S+@\S+\.\S+$');
+    final regExp = RegExp(BudgetMessages.emailRegexp);
     if (regExp.hasMatch(value ?? '')) return null;
 
     return BudgetMessages.emailIsNotValid;
