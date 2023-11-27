@@ -3,13 +3,15 @@ import 'package:budget/core/budget_messages.dart';
 class BudgetUser {
   final String id;
   final String email;
-  final int earnings;
 
   BudgetUser({
     required this.id,
     required this.email,
-    this.earnings = 0,
-  }) : assert(email.isNotEmpty),
+  })  : assert(email.isNotEmpty),
         assert(RegExp(BudgetMessages.emailRegexp).hasMatch(email)),
         assert(id.isNotEmpty);
+
+  factory BudgetUser.fromJson(Map<String, dynamic> json, String docId) {
+    return BudgetUser(id: docId, email: json['email'].toString());
+  }
 }

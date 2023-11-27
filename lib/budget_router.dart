@@ -1,6 +1,6 @@
 import 'package:budget/auth/auth_page.dart';
 import 'package:budget/common/loading/loading_page.dart';
-import 'package:budget/common/providers/auth_notifier.dart';
+import 'package:budget/auth/state/auth_notifier.dart';
 import 'package:budget/core/budget_routes.dart';
 import 'package:budget/home/home_page.dart';
 import 'package:flutter/material.dart';

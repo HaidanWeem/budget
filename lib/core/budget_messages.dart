@@ -3,6 +3,8 @@ class BudgetMessages {
   static const email = 'Email address';
   static const continueA = 'Continue';
 
+  static const forbidden = 'Forbidden';
+
   //Error messages
   static const emailIsNotValid = 'Email is not valid';
   static const invalidLink = 'Link is not valid';

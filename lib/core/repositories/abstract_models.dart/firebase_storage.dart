@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class StorageRepository {
+mixin class FirebaseStorage {
   final storage = FirebaseFirestore.instance;
 }

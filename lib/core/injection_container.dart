@@ -1,6 +1,8 @@
-import 'package:budget/common/providers/auth_notifier.dart';
-import 'package:budget/common/repositories/auth_repository.dart';
-import 'package:budget/common/repositories/user_repository.dart';
+import 'package:budget/auth/state/auth_notifier.dart';
+import 'package:budget/balance/state/balance_notifier.dart';
+import 'package:budget/core/repositories/implementations/auth_repository.dart';
+import 'package:budget/core/repositories/implementations/balance_repository.dart';
+import 'package:budget/core/repositories/implementations/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +18,7 @@ class InjectionContainer extends StatefulWidget {
 class _InjectionContainerState extends State<InjectionContainer> {
   final _authRepository = AuthRepository();
   final _userRepository = UserRepository();
+  final _balanceRepository = BalanceRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +26,9 @@ class _InjectionContainerState extends State<InjectionContainer> {
       providers: [
         ChangeNotifierProvider(
           create: (context) => AuthNotifier(_authRepository, _userRepository),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => BalanceNotifier(_balanceRepository),
         ),
       ],
       child: widget.child,

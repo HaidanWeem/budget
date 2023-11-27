@@ -1,4 +1,4 @@
-import 'package:budget/common/providers/auth_notifier.dart';
+import 'package:budget/auth/state/auth_notifier.dart';
 import 'package:budget/core/budget_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

@@ -1,9 +1,9 @@
 import 'dart:ui';
 
+import 'package:budget/auth/state/auth_notifier.dart';
 import 'package:budget/auth/widgets/budget_app_bar.dart';
 import 'package:budget/auth/widgets/email_sent.dart';
 import 'package:budget/auth/widgets/email_text_field.dart';
-import 'package:budget/common/providers/auth_notifier.dart';
 import 'package:budget/common/widget/budget_button.dart';
 import 'package:budget/core/budget_messages.dart';
 import 'package:budget/core/state/auth_state.dart';

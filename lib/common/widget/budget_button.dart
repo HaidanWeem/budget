@@ -7,10 +7,14 @@ class BudgetButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
   final double height;
+  final Color overlayColor;
+  final Color backgroundColor;
 
   const BudgetButton({
     required this.text,
     required this.onPressed,
+    this.backgroundColor = BudgetColors.primary,
+    this.overlayColor = BudgetColors.secondary,
     this.height = _height,
     super.key,
   });
@@ -19,8 +23,8 @@ class BudgetButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
-        overlayColor: MaterialStateProperty.all(BudgetColors.secondary),
-        backgroundColor: MaterialStateProperty.all(BudgetColors.primary),
+        overlayColor: MaterialStateProperty.all(overlayColor),
+        backgroundColor: MaterialStateProperty.all(backgroundColor),
       ),
       onPressed: onPressed,
       child: Container(
